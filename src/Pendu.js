@@ -155,11 +155,11 @@ export default class MonPendu extends Component {
 		)
 
 		Pendu.propTypes = {
-			guesses: PropTypes.number.isRequired,
+			wrongAnswer: PropTypes.number.isRequired,
 		}
 
 		Pendu.defaultProps = {
-			guesses: 0,
+			wrongAnswer: 0,
 		}
 
 		return(

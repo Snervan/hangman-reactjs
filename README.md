@@ -7,6 +7,8 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Hangman game created with ReactJS to learn how to use it. 
 Following this exercise : (https://openclassrooms.com/fr/courses/4664381-realisez-une-application-web-avec-react-js/exercises/2119)
 
+Demo : https://snervan.github.io/hangman-reactjs/
+
 ## How to compile your code and see what you've done ?
 
 First : You need Node.js installed with a global access to the "npm packager" (added automatically in `PATH` with Windows Setup Installer version).

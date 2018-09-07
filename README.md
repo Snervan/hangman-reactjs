@@ -9,11 +9,11 @@ Following this exercise : (https://openclassrooms.com/fr/courses/4664381-realise
 
 ## How to compile your code and see what you've done ?
 
-First : You need Node.js installed with a globally access to the "npm packager" (added automatically with Windows Setup Installer version).
+First : You need Node.js installed with a global access to the "npm packager" (added automatically in `PATH` with Windows Setup Installer version).
 
-Second: Tape `npm install` then once finished tape `npm start` (without quote) in Windows Command Prompt or Linux Console to run the developement server in the project directory
+Second: Enter `npm install` in Windows Command Prompt or Linux Console inside the project directory then, once it finished downloading the dependencies, enter `npm start` to run the developement server.
 
-Three : Once used `npm start`, this will launch automatically in a new tab in your default browser
+Three : After you used `npm start`, this will launch automatically the app in a new tab in your default browser. If not, enter this url (url set by default) : http://localhost:3000
 
 ## Available Scripts
 
@@ -54,7 +54,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Supported Browsers
 
-Note: Project tested with the lastest version of Google Chrome
+Note: Project tested with the lastest version of Google Chrome on Windows 10.
 
 By default, the generated project uses the latest version of React.
 

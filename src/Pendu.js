@@ -42,7 +42,7 @@ var [
 		jambe2Y1,
 		jambe2X2,
 		jambe2Y2 
-	] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+	] = Array(39).fill(0)
 
 export default class MonPendu extends Component {
 
@@ -128,7 +128,7 @@ export default class MonPendu extends Component {
 			 jambe2Y1,
 			 jambe2X2,
 			 jambe2Y2
-			] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+			] = Array(39).fill(0)
 		} else {
 			this.drawLine(wrongAnswer)
 		}

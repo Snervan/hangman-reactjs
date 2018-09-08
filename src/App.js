@@ -16,8 +16,8 @@ const ANSWER_MAX = 11
 class App extends Component {
   state = {
     keyboard: this.createKeyboard(),
-    indexMatched: [" "],
-    dico: this.createWord(),
+    lettersMatched: [" "],
+    word: this.createWord(),
     guesses: 0,
     wrongAnswer: 0, //Incrémenté de 1 à chaque mauvaise lettre ou lettre réutilisée
     lost: false,
@@ -40,8 +40,7 @@ class App extends Component {
 
   createWord() {
     let random = Math.floor(Math.random() * dictionary.length)
-    var word = dictionary[random]
-    var letters = []
+    let [word, letters] = [dictionary[random], []]
 
     for (var i = 0; i < word.length; i++) {
       letters.push(word[i]);
@@ -67,48 +66,42 @@ class App extends Component {
   }
 
   isMatchingDico(letter) {
-    const {dico, indexMatched, guesses, wrongAnswer, score} = this.state
+    const {word, lettersMatched, guesses, wrongAnswer, score} = this.state
     const [minLetter, majLetter] = [letter.toLowerCase(), letter.toUpperCase()]
     const newLetter = [minLetter, majLetter]
 
-    if(indexMatched.includes(minLetter) || indexMatched.includes(majLetter)) {
+    if(lettersMatched.includes(minLetter) || lettersMatched.includes(majLetter)) {
         this.setState({score: score - 2, wrongAnswer : wrongAnswer + 1})
     }
-    else if(!dico.includes(majLetter) && !dico.includes(minLetter)) {
+    else if(!word.includes(majLetter) && !word.includes(minLetter)) {
       this.setState({score: score - 1, wrongAnswer : wrongAnswer + 1})
-      this.setState({indexMatched: [...indexMatched, ...newLetter] })
+      this.setState({lettersMatched: [...lettersMatched, ...newLetter] })
     } 
     else {
       this.setState({score: score + 2})
-      this.setState({indexMatched: [...indexMatched, ...newLetter] })
+      this.setState({lettersMatched: [...lettersMatched, ...newLetter] })
     } 
 
     this.setState({guesses: guesses + 1})
   }
 
   countLettersFound() {
-    const {dico, indexMatched, won, lost, wrongAnswer} = this.state
-    let lettersFound = 0
-    
-    for (var i = 0; i < dico.length; i++) {
-      for (var y = 0; y < indexMatched.length; y++) {
-        if(dico[i] === indexMatched[y]) lettersFound++
-      }       
-    }
+    const {word, lettersMatched, won, lost, wrongAnswer} = this.state
+    let lettersFound = word.every(l => {return lettersMatched.includes(l)})
 
     if(wrongAnswer >= ANSWER_MAX && !won) {
         this.setState({lost: true})
-    } else if(lettersFound === dico.length && !lost) {
+    } else if(lettersFound && !lost) {
         this.setState({won: true})
     }
   }
 
   computeDisplay(letter) {
-    const {lost, indexMatched} = this.state
+    const {lost, lettersMatched} = this.state
     if(lost) return "visible"
 
-    if(indexMatched.length) {
-      return indexMatched.includes(letter) ? "visible" : "hidden";
+    if(lettersMatched.length) {
+      return lettersMatched.includes(letter) ? "visible" : "hidden";
     }
   }
 
@@ -127,7 +120,7 @@ class App extends Component {
   getKeyboardFeedback(key) {
     if(key === this.state.keyPressed)
       return "pressed" 
-    else if(this.state.indexMatched.includes(key)) 
+    else if(this.state.lettersMatched.includes(key)) 
       return "used"
     else
       return ""    
@@ -136,10 +129,10 @@ class App extends Component {
 
   tryAgain() {
     this.setState({
-      dico: this.createWord(),
+      word: this.createWord(),
       keyPressed: "",
       guesses: 0,
-      indexMatched: [" "],
+      lettersMatched: [" "],
       wrongAnswer: 0,
       lost: false,
       won: false,
@@ -148,14 +141,14 @@ class App extends Component {
   }
   
   render() {
-    const {keyboard, dico, wrongAnswer, guesses, score, won, lost} = this.state
+    const {keyboard, word, wrongAnswer, guesses, score, won, lost} = this.state
 
     return (
       <div className="container">
        <u><h1>Jeu du Pendu</h1></u>
         {lost && <p style={{fontSize: "14.5px"}}>La réponse était :</p>}
         <div id="dico">
-          {dico.map((letter, index) => (
+          {word.map((letter, index) => (
           <GuessWord key={index} index={index} feedback={this.computeDisplay(letter)} letter={letter} />
           ))}
         </div>

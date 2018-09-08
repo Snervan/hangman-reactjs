@@ -4,6 +4,13 @@
   text-align: center;
 }
 
+.keyboard {
+  background-color: #bec5d3;
+  padding-top: 2px; 
+  border-radius: 10px;
+  padding-bottom: 2px; 
+}
+
 body {
   margin-bottom: 3px;
 }
@@ -64,5 +71,10 @@ p {
   p {
     font-size: 13.8px;
     margin-left: 5px; 
+  }
+
+  .keyboard {
+    padding-left: 5px;
+    padding-right: 5px;
   }
 }

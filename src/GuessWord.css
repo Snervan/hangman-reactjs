@@ -1,12 +1,13 @@
 .letter {
 	display: inline-flex;
 	margin-bottom: 8px;
-	margin-left: 8px;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .visible  {
 	margin: auto;
-	margin-right: 0px;
+	margin-right: 1px;
 	margin-left: 0px; 
 	padding: 0px;
 }

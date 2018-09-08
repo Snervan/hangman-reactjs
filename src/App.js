@@ -1,5 +1,5 @@
 //App Created by Snervan; Date : September 4th, 2018
-//Last Update : September 7th, 2018
+//Last Update : September 8th, 2018
 import React, { Component } from 'react'
 import Keyboard from './Keyboard'
 import GuessWord from './GuessWord'
@@ -8,7 +8,7 @@ import './App.css';
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 //Pre-defined dictionnary of words to guess in an array (French words)
-const dictionary = ["Un singe", "Ane", "Mot", "Un enfant", "Pseudo", "Snervan", "Dire", "Un bateau", "Une voiture", "Decision", "Palmure", "Armature", "Velleitaire"]
+const dictionary = ["Un singe", "Ane", "Mot", "Un enfant", "Pseudo", "Dire", "Un bateau", "Une voiture", "Decision", "Palmure", "Armature", "Velleitaire"]
 /* Pas touche ! Variable constante ci-dessous permettant de savoir le nombre 
    de fausses réponses max avant d'avoir le pendu complet et activer la condition de défaite (nbre = 11) */
 const ANSWER_MAX = 11 

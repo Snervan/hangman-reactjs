@@ -13,7 +13,11 @@ const Keyboard = ({feedback, letter, index, onMouseDown}) => (
 Keyboard.propTypes = {
 	letter: PropTypes.string.isRequired,
 	index: PropTypes.number.isRequired,
-	feedback: PropTypes.string.isRequired,
+	feedback: PropTypes.oneOf([
+		'',
+		'pressed',
+		'used'
+	]).isRequired,
 	onMouseDown: PropTypes.func.isRequired,
 }
 

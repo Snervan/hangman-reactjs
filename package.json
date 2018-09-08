@@ -1,6 +1,6 @@
 {
   "name": "pendu",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "private": true,
   "homepage": "https://snervan.github.io/hangman-reactjs",
   "dependencies": {

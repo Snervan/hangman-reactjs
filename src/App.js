@@ -8,7 +8,7 @@ import './App.css';
 
 const ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 //Pre-defined dictionnary of words to guess in an array (French words)
-const dictionary = ["Ane", "Mot", "Pseudo", "Snervan", "Dire", "Bateau", "Voiture", "Decision", "Palmure", "Armature", "Velleitaire"]
+const dictionary = ["Un singe", "Ane", "Mot", "Pseudo", "Un enfant", "Snervan", "Dire", "Un bateau", "Une voiture", "Decision", "Palmure", "Armature", "Velleitaire"]
 /* Pas touche ! Variable constante ci-dessous permettant de savoir le nombre 
    de fausses réponses max avant d'avoir le pendu complet et activer la condition de défaite (nbre = 11) */
 const ANSWER_MAX = 11 
@@ -27,6 +27,11 @@ class App extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if(!this.state.indexMatched.length) {
+      let space = [" "]
+      this.setState({indexMatched: [...this.state.indexMatched, ...space]})
+    }
+
     if(!this.state.won && !this.state.lost) this.countLettersFound()
   }
 
@@ -104,8 +109,12 @@ class App extends Component {
   }
 
   computeDisplay(letter) {
-    if(this.state.lost) return "visible"
-    return this.state.indexMatched.includes(letter) ? "visible" : "hidden"
+    const {lost, indexMatched} = this.state
+    if(lost) return "visible"
+
+    if(indexMatched.length) {
+      return indexMatched.includes(letter) ? "visible" : "hidden";
+    }
   }
 
   createKeyboard() {

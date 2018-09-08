@@ -5,8 +5,8 @@ import './GuessWord.css'
 const HIDDENSYMBOL = '_'
 
 const GuessWord = ({index, letter, feedback}) => (
-	<div className={`letter ${feedback}`}>
-		{feedback === 'hidden' ? HIDDENSYMBOL : letter}
+	<div className={`letter ${letter} ${feedback}`}>
+		{letter === ' ' ? "\u00A0" : feedback === 'hidden' ? HIDDENSYMBOL : letter}
 	</div>
 )
 
